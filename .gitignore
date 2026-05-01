@@ -1,38 +1,66 @@
-# macOS
+# OSX
+#
 .DS_Store
-.AppleDouble
-.LSOverride
 
-# IDE
-.idea/
-.vscode/
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+ios/.xcode.env.local
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
 *.iml
-*.ipr
-*.iws
-
-# Logs
-*.log
-logs/
-
-# Env / Secrets
-.env
-.env.*
-!.env.example
-*.local
-application-local.*
-application-secret.*
-*.pem
-*.key
-*.p12
+*.hprof
+.cxx/
 *.keystore
+!debug.keystore
 
-# Backend (Gradle / Spring Boot)
-backend/build/
-backend/.gradle/
-backend/out/
-backend/bin/
-backend/HELP.md
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
 
-# Claude (개인 설정만 제외, 공용 settings.json은 공유)
-.claude/settings.local.json
-.claude/.credentials*
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
+# Bundle artifact
+*.jsbundle
+
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
+
+# Temporary files created by Metro to check the health of the file watcher
+.metro-health-check*
+
+# testing
+/coverage
