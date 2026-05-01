@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+*.log
+logs/
+
+# Env / Secrets
+.env
+.env.*
+!.env.example
+*.local
+application-local.*
+application-secret.*
+*.pem
+*.key
+*.p12
+*.keystore
+
+# Backend (Gradle / Spring Boot)
+backend/build/
+backend/.gradle/
+backend/out/
+backend/bin/
+backend/HELP.md
+
+# Claude (개인 설정만 제외, 공용 settings.json은 공유)
+.claude/settings.local.json
+.claude/.credentials*
