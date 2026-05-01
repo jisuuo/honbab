@@ -1,0 +1,52 @@
+name: ✨ Feature
+description: 새 기능 또는 사용자에게 닿는 변경사항
+title: "[Area] 짧은 제목"
+labels: ["type: feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **작성 순서: Why → What → Acceptance Criteria.**
+        반나절~1일 안에 끝낼 수 있는 크기로 쪼개주세요. 더 크면 에픽으로 두고 자식 이슈를 만드세요.
+  - type: textarea
+    id: why
+    attributes:
+      label: 🎯 왜 (Why)
+      description: 이 기능이 필요한 이유 — 미래의 본인이 읽을 컨텍스트
+      placeholder: |
+        예) 사용자가 식당 200m 밖에서 체크인하면 데이터 신뢰도가 깨지므로,
+        서버에서 거리 검증을 강제로 해야 한다.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 🛠️ 무엇을 (What)
+      description: 구체적으로 무엇을 만들/바꿀 것인가
+      placeholder: |
+        - POST /api/sessions 요청에 lat/lng 검증 추가
+        - 200m 초과 시 400 + errorCode=OUT_OF_RANGE
+        - 검증 통과 후에만 INSERT 진행
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: ✅ 완료 조건 (Acceptance Criteria)
+      description: 이 항목이 모두 통과되면 머지 가능
+      placeholder: |
+        - [ ] 단위 테스트: 0m / 199m / 201m / 1km 케이스
+        - [ ] 통합 테스트: 200m 밖 요청 → 400
+        - [ ] Swagger 문서에 errorCode 추가
+        - [ ] PR 셀프 리뷰 완료
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 📝 메모 / 참고
+      description: 관련 ADR, 학습 노트, 외부 자료, 의존 이슈
+      placeholder: |
+        - 관련 ADR: ADR-003 (GPS 검증 위치)
+        - 참고: Haversine formula
+        - 의존: #5 (sessions 테이블 마이그레이션)

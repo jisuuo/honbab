@@ -1,0 +1,28 @@
+name: 🧹 Chore / Refactor
+description: 빌드, 설정, 의존성, 리팩터링, 문서, 잡일
+title: "[Chore] 짧은 제목"
+labels: ["type: chore"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 🛠️ 무엇
+      placeholder: 의존성 업그레이드 / Flyway 마이그레이션 추가 / README 보강 ...
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: 🎯 왜
+      placeholder: 보안 패치 / 빌드 경고 / 개발 편의 / 후속 작업 준비 ...
+    validations:
+      required: true
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 🗺️ 영향 영역
+      options:
+        - label: Backend (Spring/DB)
+        - label: Frontend (RN/UI)
+        - label: Infra (AWS/CI)
+        - label: Docs

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 학습 노트 (Notion)
+    url: https://www.notion.so/4a18ca67ae5b4e2a97331630fab0099b
+    about: 코드/이슈와 무관한 개념 정리는 노션 학습 노트에 남겨주세요.
+  - name: 🧱 ADR (Notion)
+    url: https://www.notion.so/59555b1810b544749215d976035bb567
+    about: 기술 결정 기록은 ADR 데이터베이스에 남겨주세요.
+  - name: 🏃 작업일지 (Notion)
+    url: https://www.notion.so/0a962869151e4afb878322483699e060
+    about: 매일 5분짜리 진척/막힘 기록.

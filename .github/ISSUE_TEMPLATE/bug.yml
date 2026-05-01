@@ -1,0 +1,43 @@
+name: 🐛 Bug
+description: 동작이 기대와 다름 — 회귀, 크래시, 잘못된 결과
+title: "[Bug] 짧은 제목"
+labels: ["type: bug"]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ 기대한 동작
+      placeholder: 체크인 버튼을 누르면 session이 생성되고 카운터가 +1 된다.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 🔴 실제 동작
+      placeholder: 카운터가 안 올라감. 두 번째 시도부터 409가 떨어짐.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 재현 방법
+      placeholder: |
+        1. 카카오 로그인
+        2. 식당 A 마커 탭 → 체크인
+        3. 카운터 그대로 0
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 💻 환경
+      placeholder: |
+        - OS: iOS 17.4 / macOS 14.4
+        - Java: 21
+        - RN: 0.74.x
+        - 기기: iPhone 15 시뮬레이터
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📋 로그 / 스크린샷
+      description: 가능하면 스택 트레이스나 네트워크 응답을 첨부
