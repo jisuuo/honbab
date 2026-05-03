@@ -22,7 +22,7 @@ honbab/
 └── CLAUDE.md       이 파일
 ```
 
-루트에 `App.tsx`, `package.json`, `ios/`, `android/` 등이 있지만 **이건 RN 초기 부트스트랩 잔재**. 모바일 작업은 `frontend/`에서 한다. 루트 RN 파일은 수정 금지.
+모바일 작업은 `frontend/`에서, 백엔드 작업은 `backend/`에서 한다. 루트에는 문서·공용 설정만 둔다.
 
 ---
 
@@ -42,11 +42,10 @@ honbab/
 
 ### 4.1 현재 상태 (중요)
 
-- **현재 패키지**: `jisu.backend.*` (Spring Boot 초기 스캐폴딩)
-- **목표 패키지**: `com.honbap.*` (ARCHITECTURE.md 기준)
-- 새 코드 추가 시 패키지 결정이 애매하면 사용자에게 확인할 것. 임의로 둘 중 하나로 가지 말 것.
+- **패키지**: `com.honbab.*` (ARCHITECTURE.md 기준과 일치). 메인 클래스는 `com.honbab.HonbabApplication`.
 - 의존성 현황(`build.gradle`): `spring-boot-starter-web`, `validation`, `lombok`, `devtools`만 있음.
 - **아직 없는 것**: JPA, Spring Security, Flyway, JWT, Supabase 연동, DB 드라이버. 이 의존성이 필요한 코드를 짜기 전에 사용자에게 추가 의향 확인.
+- 슬라이스 코드(`auth/`, `restaurant/`, `session/`, `user/`)는 아직 없음. 첫 슬라이스를 만들 때 ARCHITECTURE.md §4 템플릿을 따른다.
 
 ### 4.2 명령어
 
@@ -89,7 +88,7 @@ ARCHITECTURE.md §11과 동일하지만 여기서도 반복:
 
 ### 5.1 현재 상태
 
-- React Native 0.72 + TypeScript 4.8 (CLI 부트스트랩 직후 상태).
+- React Native 0.85.2 + React 19.2 + TypeScript 5.8 (CLI 부트스트랩 직후 상태).
 - 컴포넌트 구조, 상태 관리(zustand/jotai/redux 등), 네트워킹(fetch/axios/RTK Query 등) 등 **컨벤션 미확정**.
 - 새 컨벤션을 도입할 때는 사용자와 합의 후 이 문서 §5에 추가할 것.
 
@@ -118,16 +117,13 @@ npm run lint                # ESLint
 - **`main` 브랜치 직접 푸시 금지.** 항상 feature 브랜치 → PR.
 - **DB 스키마 변경은 Flyway 마이그레이션으로만.** (도입 후) 엔티티만 바꾸고 마이그레이션 파일을 안 만들면 운영 환경 깨짐.
 - **시크릿(API 키, JWT secret, DB 비밀번호) 코드/Git에 커밋 금지.** 환경변수 또는 Supabase secret manager.
-- **루트의 RN 잔재 파일(`/App.tsx`, `/package.json`, `/ios/`, `/android/`)을 수정하지 않는다.** 모바일 작업은 `frontend/`에서.
+- **모바일 작업은 `frontend/`에서만.** 루트에 RN 파일을 다시 만들지 않는다.
 - **`node_modules/`, `build/`, `.gradle/` 안의 파일은 절대 직접 수정하지 않는다.**
 - **사용자 확인 없이 의존성 추가 금지.** `build.gradle`이나 `package.json` 수정 시 먼저 사용자에게 확인.
 
 ---
 
 ## 7. 자주 헷갈리는 결정 (지침)
-
-### 백엔드 패키지 이름 (`jisu.backend` vs `com.honbap`)
-현재 코드는 `jisu.backend`, 문서는 `com.honbap`. 정합성 작업이 아직 안 된 상태. 새 코드 작성 시 **사용자에게 어느 쪽으로 갈지 먼저 확인**한다.
 
 ### 새 의존성을 추가하고 싶을 때
 JPA, Security, Flyway 등 ARCHITECTURE.md가 가정하는 의존성도 아직 build.gradle에 없다. 코드 짜기 전에 사용자에게 "이 의존성을 추가하고 진행할까요?" 확인.
@@ -145,7 +141,7 @@ JPA, Security, Flyway 등 ARCHITECTURE.md가 가정하는 의존성도 아직 bu
 ### 테스트 작성 시
 - 단위 테스트: `application/` 레이어 위주. Repository는 mock 또는 `@DataJpaTest`.
 - 통합 테스트: `@SpringBootTest`는 비싸므로 핵심 시나리오만.
-- 테스트 파일 위치는 production 코드와 동일한 패키지(`src/test/java/com/honbap/{slice}/...`).
+- 테스트 파일 위치는 production 코드와 동일한 패키지(`src/test/java/com/honbab/{slice}/...`).
 
 ---
 

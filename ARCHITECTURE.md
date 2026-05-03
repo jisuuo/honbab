@@ -1,7 +1,7 @@
-# HONBAP Backend Architecture Guide
+# HONBAB Backend Architecture Guide
 
 > 백엔드 코드 작성·리뷰 기준 문서. AI 에이전트와 개발자가 모두 참조한다.
-> 적용 범위: `backend/src/main/java/com/honbap/**`
+> 적용 범위: `backend/src/main/java/com/honbab/**`
 > 구조: Vertical Slice + Layered (Package by Feature, Layered inside)
 > 마지막 업데이트: 2026-04
 
@@ -9,7 +9,7 @@
 
 ## 0. TL;DR (30초 요약)
 
-- 코드는 **슬라이스(기능)** → **레이어(역할)** 순으로 분류한다: `com.honbap.{slice}.{api|application|domain|infra}`.
+- 코드는 **슬라이스(기능)** → **레이어(역할)** 순으로 분류한다: `com.honbab.{slice}.{api|application|domain|infra}`.
 - 의존성 방향: `api → application → domain ← infra`. **`domain`은 누구에게도 의존하지 않는다.**
 - 슬라이스 외부에 노출 가능한 건 **`application/`의 Service와 Read DTO(record)**뿐. 엔티티·리포지토리는 슬라이스 안에 가둔다.
 - `shared/`는 횡단 관심사(보안·예외·BaseEntity 등)만. 도메인 로직 금지. **Rule of Three** (3번째 사용처에서 승격).
@@ -160,7 +160,7 @@ public Restaurant findById(UUID id) { ... }
 ### 4.1 컨트롤러
 
 ```java
-package com.honbap.{slice}.api;
+package com.honbab.{slice}.api;
 
 @RestController
 @RequestMapping("/api/{slice-plural}")
@@ -180,7 +180,7 @@ public class {Name}Controller {
 ### 4.2 Service (유스케이스)
 
 ```java
-package com.honbap.{slice}.application;
+package com.honbab.{slice}.application;
 
 @Service
 @RequiredArgsConstructor
@@ -202,7 +202,7 @@ public class {Name}Service {
 ### 4.3 Cross-slice Read DTO
 
 ```java
-package com.honbap.{slice}.application;
+package com.honbab.{slice}.application;
 
 public record {Name}Info(UUID id, String name /* 노출할 필드만 */) {
     public static {Name}Info from({Name} entity) {
@@ -214,7 +214,7 @@ public record {Name}Info(UUID id, String name /* 노출할 필드만 */) {
 ### 4.4 엔티티
 
 ```java
-package com.honbap.{slice}.domain;
+package com.honbab.{slice}.domain;
 
 @Entity
 @Getter
@@ -231,7 +231,7 @@ public class {Name} extends BaseEntity {
 ### 4.5 Repository
 
 ```java
-package com.honbap.{slice}.infra;
+package com.honbab.{slice}.infra;
 
 public interface {Name}Repository extends JpaRepository<{Name}, UUID> {
     // 쿼리 메서드. 반환 타입은 엔티티 OK (같은 슬라이스 내부이므로).
@@ -263,7 +263,7 @@ class SessionController {
 
 // ❌ AP-4: 도메인이 인프라를 import (RULE-1 위반)
 // session/domain/Session.java
-import com.honbap.session.infra.SessionRepository;  // 금지
+import com.honbab.session.infra.SessionRepository;  // 금지
 
 // ❌ AP-5: 슬라이스 간 양방향 의존 (RULE-7 위반)
 // session → user 호출이 있으면 user → session 호출 금지
@@ -284,7 +284,7 @@ class Session {
 ## 6. 폴더 구조 (현재)
 
 ```
-backend/src/main/java/com/honbap/
+backend/src/main/java/com/honbab/
 ├── auth/
 │   ├── api/         AuthController, dto/{LoginRequest, TokenResponse, RefreshRequest}
 │   ├── application/ AuthService, JwtProvider
@@ -353,7 +353,7 @@ backend/src/main/java/com/honbap/
 ## 9. 명명 규칙
 
 - 슬라이스 이름: 단수형 (`session`, not `sessions`)
-- 패키지명: 소문자 (`com.honbap.session.application`)
+- 패키지명: 소문자 (`com.honbab.session.application`)
 - 레이어 폴더: `api | application | domain | infra` 4종으로 통일
 - DTO 위치
   - HTTP 요청·응답: `{slice}/api/dto/`
