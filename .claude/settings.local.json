@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ruby -v)",
+      "Bash(xcode-select -p)",
+      "Bash(rbenv versions *)",
+      "Bash(rbenv version *)",
+      "Bash(rbenv install *)",
+      "Bash(grep -E \"^\\\\s*3\\\\.[0-9]+\\\\.[0-9]+\\\\s*$\")",
+      "Bash(npm install *)",
+      "Bash(~/Library/Android/sdk/emulator/emulator *)",
+      "Bash(lsof -iTCP:8081 -sTCP:LISTEN)",
+      "Bash(curl -sS -m 2 http://localhost:8081/status)",
+      "Bash(timeout 15 npm start)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
