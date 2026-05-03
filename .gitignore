@@ -24,3 +24,6 @@ Thumbs.db
 # 임시 파일
 *.tmp
 *.bak
+
+backlog-writing-guide.md
+notion-schema-spec.md

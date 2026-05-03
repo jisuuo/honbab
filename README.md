@@ -50,7 +50,7 @@ npm run android         # Android 에뮬레이터
 
 ## 문서
 
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — 백엔드 코드 구조와 작성 규칙. 백엔드 코드를 만지기 전에 반드시 읽기.
+- **[ARCHITECTURE.md](ARCHITECTURES.md)** — 백엔드 코드 구조와 작성 규칙. 백엔드 코드를 만지기 전에 반드시 읽기.
 - **[CLAUDE.md](./CLAUDE.md)** — AI 에이전트(Claude 등) 작업용 가이드. 명령어, 컨벤션, 금기사항 모음.
 - **[backlog-writing-guide.md](./backlog-writing-guide.md)** — Notion 백로그 작성 규칙.
 - **[notion-schema-spec.md](./notion-schema-spec.md)** — Notion DB 스키마 명세.
